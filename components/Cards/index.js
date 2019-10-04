@@ -26,14 +26,20 @@ axios
 
 
         let cardInfo = response.data.articles;
-        console.log(response.data);
+        console.log(response.data.articles);
         // console.log(cardInfo);
         
+    // const keys = Object.keys(cardInfo)
+    // for (const key of keys) {
+    // Object.values(cardInfo.javascript).forEach((item) => {
+    //     cards.appendChild(cardCreator(item.headline, item.authorPhoto, item.authorName));
+    //     // console.log(item)
+    
+    // });
 
     Object.values(cardInfo.javascript).forEach((item) => {
         cards.appendChild(cardCreator(item.headline, item.authorPhoto, item.authorName));
-        // console.log(item)
-    });  
+    }); 
     Object.values(cardInfo.bootstrap).forEach((item) => {
         cards.appendChild(cardCreator(item.headline, item.authorPhoto, item.authorName));
     });  
@@ -50,6 +56,7 @@ axios
  .catch(error => {
     console.log('you have an error', error);
 })
+
 
 // axios
 //     .get(`https://lambda-times-backend.herokuapp.com/articles`)
