@@ -9,34 +9,31 @@
 //    <div class="tab">topic here</div>
 
 axios
-    .get(`https://lambda-times-backend.herokuapp.com/topics`)
+    .get('https://lambda-times-backend.herokuapp.com/topics')
     .then(response => {
-        console.log(response.data);
-        const myVar = response.data;
+        console.log(response);
         
-        tabs.appendChild(tabsCreator(myVar));
-
-        // tabInfo.forEach(e => {
-        //     // axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
-        //     // .then(response => {
-        //         // console.log(response);
-               
-        //     })
+        topics.forEach(e => {
+            const newTab = response.data.topics;
+            tabs.appendChild(newTab);
         })
-        
-    // })
-
+    })
+    .catch(error => {
+        console.log('there is an error', error);
+    })
+   
 const tabs = document.querySelector('.tabs')
 
-function tabsCreator(data) {
+function tabsCreator(item) {
     const tabElement = document.createElement('div');
     const tabTopics = document.createElement('div');
     const tabTitle = document.createElement('span');
 
     tabTitle.textContent = data.topics;
 
+    console.log(item.topic);
     tabElement.classList.add('tab');
-    tabTopics.classList.add('.topics');
+    tabTopics.classList.add('topics');
     tabTitle.classList.add('title');
 
     tabs.appendChild(tabElement);
@@ -44,7 +41,7 @@ function tabsCreator(data) {
     tabTopics.appendChild(tabTitle);
 
    
-    console.log(data.topics)
+    
 
     return tabElement;
 
