@@ -13,7 +13,8 @@ axios
     .then(response => {
         console.log(response);
         
-        topics.forEach(e => {
+        response.data.topics.forEach(e => {
+            
             const newTab = response.data.topics;
             tabs.appendChild(newTab);
         })
