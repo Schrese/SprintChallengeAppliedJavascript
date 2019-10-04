@@ -46,7 +46,7 @@ We would do this so that we can use .for each and .map
 
 5. What is a component?
 
-
+It is a piece of code that is reusable across several different aspects of the page you're creating. It allows us to create DRY code.
 
 ### Git Set up
 
