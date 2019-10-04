@@ -11,32 +11,41 @@
 axios
     .get(`https://lambda-times-backend.herokuapp.com/topics`)
     .then(response => {
-        // console.log(response.data);
-        // const tabInfo = response.data;
-        // // tabsCreator(tabInfo);
+        console.log(response.data);
+        const myVar = response.data;
+        
+        tabs.appendChild(tabsCreator(myVar));
 
-        response.data.forEach(e => {
-            axios.get(`https://lambda-times-backend.herokuapp.com/topics${e.topics}`)
-            .then(response => {
-                console.log(response);
-                const myVar = response.data;
-                tabsCreator(myVar);
-                tabs.appendChild(tabsCreator(myVar));
-            })
+        // tabInfo.forEach(e => {
+        //     // axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
+        //     // .then(response => {
+        //         // console.log(response);
+               
+        //     })
         })
         
-    })
+    // })
 
 const tabs = document.querySelector('.tabs')
 
 function tabsCreator(data) {
     const tabElement = document.createElement('div');
+    const tabTopics = document.createElement('div');
+    const tabTitle = document.createElement('span');
+
+    tabTitle.textContent = data.topics;
 
     tabElement.classList.add('tab');
+    tabTopics.classList.add('.topics');
+    tabTitle.classList.add('title');
 
-    tabElement.textContent = data.topics;
+    tabs.appendChild(tabElement);
+    tabElement.appendChild(tabTopics);
+    tabTopics.appendChild(tabTitle);
+
+   
+    console.log(data.topics)
 
     return tabElement;
 
 }
-// tabs.appendChild(tabsCreator(data))
